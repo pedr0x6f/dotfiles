@@ -1,28 +1,10 @@
 #! /bin/sh
 
-sudo rm /var/lib/dpkg/lock-frontend
-sudo rm /var/cache/apt/archives/lock
+sudo rm /var/lib/dpkg/lock-frontend ; sudo rm /var/cache/apt/archives/lock
 
-sudo apt update -y
-sudo apt full-upgrade -y
-
-DOWNLOADS="$HOME/Downloads/programas"
-
-VSCODE="https://az764295.vo.msecnd.net/stable/e18005f0f1b33c29e81d732535d8c0e47cafb0b5/code_1.66.0-1648620611_amd64.deb"
-VIRTUALBOX="https://download.virtualbox.org/virtualbox/6.1.32/virtualbox-6.1_6.1.32-149290~Ubuntu~eoan_amd64.deb"
-EXTENSIONPACK="https://download.virtualbox.org/virtualbox/6.1.32/Oracle_VM_VirtualBox_Extension_Pack-6.1.32.vbox-extpack"
-
-wget -c https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip  -P "$DOWNLOADS"
-sudo unzip $HOME/Downloads/Hack.zip -d /usr/share/fonts
-fc-cache -fv
+sudo apt update ; sudo apt full-upgrade -y
 
 sudo apt install iotop htop preload vlc vim neovim git gcc g++ curl zsh unar unrar unzip p7zip p7zip-rar p7zip-full build-essential ubuntu-restricted-addons ubuntu-restricted-extras gufw fonts-hack-ttf fonts-firacode -y
-
-mkdir "$DOWNLOADS"
-wget -c "$VSCODE"        -P "$DOWNLOADS"
-wget -c "$VIRTUALBOX"    -P "$DOWNLOADS"
-wget -c "$EXTENSIONPACK" -P "$DOWNLOADS"
-sudo dpkg -i $DOWNLOADS/*.deb
 
 sudo ufw enable
 
@@ -55,9 +37,4 @@ pedro soft nofile 8192
 pedro hard nofile 16384
 EOF
 
-sudo apt install -f -y
-sudo apt update -y
-sudo apt dist-upgrade -y
-sudo apt full-upgrade -y
-sudo apt autoclean -y
-sudo apt autoremove -y
+sudo apt install -f ;  sudo apt update ; sudo apt upgrade ; sudo apt dist-upgrade ; sudo apt full-upgrade ; sudo apt autoclean ; sudo apt autoremove -y
